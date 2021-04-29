@@ -1,0 +1,119 @@
+$color-primary:#d4a29c;
+$color-secondary:#9daaa2;
+$color-trinary:#edcc8b;
+$color-orange:#e8b298;
+$color-white:#ffffff;
+$color-light-grey:#f0f0f0;
+$color-black:#000000;
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.main{
+    &__wrapper{
+        display: flex;
+        width: 100vw;
+        height: 100%;
+        flex-direction: column;
+    }
+}
+.landing{
+    &__wrapper{
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+.nav{
+    width: 100%;
+    height: 50px;
+    background-color:$color-primary;
+    color:$color-white;
+    padding:5px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+.profile_img{
+    border: none;
+    margin-left: 15px;
+}
+
+
+.post{
+    width: 500px;
+    height: 300px;
+    border-radius: 40px;
+    background-color: $color-light-grey;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-left:20px;
+    margin-bottom:20px;
+    &__wrapper{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .author{
+        background-color:$color-secondary;
+        color:$color-white;
+        height: 60px;
+        padding: 10px 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        img{
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+    }
+    .content{
+        color:$color-black;
+        padding: 10px 20px;
+        height: 190px;
+
+    }
+    .footer{
+        height: 50px;
+        background-color: $color-trinary;
+        color: $color-black;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+       
+    } 
+}
+.button{
+    border:none;
+    outline: none;
+    background-color: $color-orange;
+    padding:4px 10px;
+    border-radius: 40px;
+    color: $color-white;
+    font-weight: bold;
+    cursor: pointer;
+    &:active{
+        transform: scale(0.9);
+    }
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    padding:30px;
+    textarea{
+        border-radius: 20px;
+        height: 150px;
+        outline: none;
+        border: none;
+        padding:10px;
+        margin-bottom: 20px;
+    }
+    .message{
+        text-align: center;
+    }
+}
