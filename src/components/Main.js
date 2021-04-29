@@ -18,7 +18,7 @@ const Main = ({posts,postCount,sendTip,createPost,message}) => {
                     <h4>Content:</h4>
                     <textarea name='content' onChange={onContentChange} value={content}/>
                     <button className='button' onClick={onCreatePost}>Post</button>
-                    {message!==''&& <div>{message}</div>}
+                    {message!==''&& <div className='message'>{message}</div>}
                 </div>
             </div>
         )
