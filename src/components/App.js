@@ -39,11 +39,9 @@ const App = () => {
     setPostCount(countToNum)
     for (let i = 1; i <= countToNum; i++) {
       const post = await sn.methods.posts(i).call()
-
       postArr.unshift(post)
-      console.log(`postArr`, postArr)
-      setPosts(postArr)
     }
+    setPosts(postArr)
   }
 
   const connectContract = async () => {

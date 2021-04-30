@@ -12,7 +12,6 @@ const Main = ({ posts, postCount, sendTip, createPost, message }) => {
     setContent('')
   }
   const renderForm = () => (
-    // <div className='post'>
     <div className='form' key='form'>
       <h4>Content:</h4>
       <textarea name='content' onChange={onContentChange} value={content} />
@@ -21,11 +20,9 @@ const Main = ({ posts, postCount, sendTip, createPost, message }) => {
       </button>
       {message !== '' && <div className='message'>{message}</div>}
     </div>
-    // </div>
   )
 
   const renderPost = () => {
-    const web3 = window.web3
     return posts.map((post, index) => (
       <div key={post.id} className='post'>
         <div className='author'>
@@ -34,8 +31,8 @@ const Main = ({ posts, postCount, sendTip, createPost, message }) => {
         </div>
         <div className='content'>{post.content}</div>
         <div className='footer'>
-          Tip:{web3.utils.toWei(post.tipAmount.toString(), 'Ether')} ETH
-          <button className='button' onClick={() => sendTip(index + 1)}>
+          Tip:{window.web3.utils.toWei(post.tipAmount.toString(), 'Ether')} ETH
+          <button className='button' onClick={() => sendTip(post.id)}>
             Tip 0.1 ETH
           </button>
         </div>

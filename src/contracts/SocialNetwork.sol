@@ -10,13 +10,15 @@ contract SocialNetwork {
        string content;
        uint tipAmount;
        address payable author; //payable special data type
+       uint index;
    }
 
    event PostCreated(
        uint id,
        string content,
        uint tipAmount,
-       address payable author
+       address payable author,
+       uint index
    );
    event PostTipped(
        uint id,
