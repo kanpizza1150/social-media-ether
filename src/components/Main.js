@@ -12,16 +12,16 @@ const Main = ({ posts, postCount, sendTip, createPost, message }) => {
     setContent('')
   }
   const renderForm = () => (
-    <div key='form' className='post'>
-      <div className='form'>
-        <h4>Content:</h4>
-        <textarea name='content' onChange={onContentChange} value={content} />
-        <button className='button' onClick={onCreatePost}>
-          Post
-        </button>
-        {message !== '' && <div className='message'>{message}</div>}
-      </div>
+    // <div className='post'>
+    <div className='form' key='form'>
+      <h4>Content:</h4>
+      <textarea name='content' onChange={onContentChange} value={content} />
+      <button className='button' onClick={onCreatePost}>
+        Post
+      </button>
+      {message !== '' && <div className='message'>{message}</div>}
     </div>
+    // </div>
   )
 
   const renderPost = () => {

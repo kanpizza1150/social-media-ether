@@ -12,6 +12,13 @@ const App = () => {
   const [loadingMessage, setLoadingMessage] = useState('Loading...')
   const [posts, setPosts] = useState([])
   const [message, setMessage] = useState('')
+
+  window.ethereum.on('accountsChanged', (accounts) => {
+    if (account !== accounts[0]) {
+      setAccount(accounts[0])
+    }
+  })
+
   const loadWeb3 = async () => {
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum)
@@ -26,14 +33,15 @@ const App = () => {
   }
 
   const loadPosts = async (sn = socialNetwork) => {
-    console.log('+++++++++')
     const postArr = []
     const postCounter = await sn.methods.postCount().call()
     const countToNum = window.web3.utils.hexToNumber(postCounter)
     setPostCount(countToNum)
     for (let i = 1; i <= countToNum; i++) {
       const post = await sn.methods.posts(i).call()
-      postArr.push(post)
+
+      postArr.unshift(post)
+      console.log(`postArr`, postArr)
       setPosts(postArr)
     }
   }
@@ -69,7 +77,7 @@ const App = () => {
   useEffect(() => {
     loadWeb3()
     loadBlockchainData()
-  }, [])
+  }, [account])
 
   const sendTip = (id) => {
     const ETH_01 = window.web3.utils.toWei('1', 'Ether')
@@ -77,7 +85,7 @@ const App = () => {
       .tipPost(id)
       .send({ from: account, value: ETH_01 })
       .on('confirmation', async () => {
-        // await loadPosts()
+        await loadPosts()
         setIsLoading(false)
         setMessage('tip sent!')
       })
